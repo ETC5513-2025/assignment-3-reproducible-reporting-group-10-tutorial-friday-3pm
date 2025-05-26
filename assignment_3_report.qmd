@@ -4,4 +4,20 @@ format: html
 editor: visual
 ---
 
+## Methodology
 
+```{r}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+# Read in the data set
+data <- read_csv("data/student_lifestyle_dataset.csv")
+```
+
+The [data set](https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset) consists of responses from 2,000 students collected through a standardized questionnaire. It includes data on self-reported academic performance (GPA), perceived stress level (Low, Moderate, or High), and various lifestyle habits.
+
+In this report, we will focus on GPA, stress level, and daily physical activity duration, measured in hours.
