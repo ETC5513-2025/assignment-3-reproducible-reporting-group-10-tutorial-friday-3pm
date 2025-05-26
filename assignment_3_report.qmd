@@ -4,4 +4,16 @@ format: html
 editor: visual
 ---
 
+## Reference
 
+American College Health Association. (2020). *National College Health Assessment III: Spring 2020 reference group executive summary*. <https://portal.acha.org/documents/ncha/NCHA-III_SPRING-2020_REFERENCE_GROUP_EXECUTIVE_SUMMARY.pdf>
+
+Biddle, S. J. H., & Asare, M. (2011). Physical activity and mental health in children and adolescents: A review of reviews. *British Journal of Sports Medicine, 45(11)*, 886–895. <https://doi.org/10.1136/bjsports-2011-090185>
+
+El Ansari, W., & Stock, C. (2010). Is the health and wellbeing of university students associated with their academic performance? Cross-sectional findings from the United Kingdom. *International Journal of Environmental Research and Public Health, 7(2)*, 509–527. <https://doi.org/10.3390/ijerph7020509>
+
+Kaggle. Student lifestyle dataset. *Kaggle*. <https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset>
+
+Pascoe, M. C., Hetrick, S. E., & Parker, A. G. (2020). The impact of stress on students in secondary school and higher education. *International Journal of Adolescence and Youth, 25(1)*, 104–112. <https://doi.org/10.1080/02673843.2019.1596823>
+
+Trockel, M. T., Barnes, M. D., & Egget, D. L. (2000). Health-related variables and academic performance among first-year college students: Implications for sleep and other behaviors. *Journal of American College Health, 49(3)*, 125–131. <https://doi.org/10.1080/07448480009596294>
