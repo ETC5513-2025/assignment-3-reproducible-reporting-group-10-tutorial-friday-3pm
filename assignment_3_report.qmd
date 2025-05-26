@@ -4,4 +4,6 @@ format: html
 editor: visual
 ---
 
+## Executive summary
 
+This report investigates the relationship between physical activity, academic performance (GPA), and stress levels among university students using data from 2,000 google form survey responses. The analysis finds that students engaging in higher levels of daily physical activity tend to report lower stress but also slightly lower GPAs. Physical activity duration was categorized into four groups to examine patterns and trade-offs. The findings suggest that moderate physical activity may support well-being without significantly compromising academic outcomes.
