@@ -44,6 +44,8 @@ knitr::opts_chunk$set(
   fig.retina = 3)
 ```
 
+\clearpage
+
 ## Executive summary
 
 This report investigates the relationship between physical activity, academic performance (GPA), and stress levels among 2,000 students. Physical activity duration was categorized into four groups to examine patterns and trade-offs. The analysis finds that students engaging in higher levels of daily physical activity tend to report lower stress but also slightly lower GPA. These findings support promoting balanced physical activity to enhance well-being without compromising academic success.
@@ -136,3 +138,61 @@ The results show a gradual decrease in both GPA and perceived stress level with 
 
 These patterns provide the foundation for further analysis in the Results section, where the impact of physical activity on academic performance and stress levels is examined using visualizations such as a jitter plot and a stacked bar chart.
 
+## Results {#sec-report-results}
+
+
+```{r}
+#| label: fig-pa_group_GPA
+#| fig-cap: GPA distribution by physical activity group
+#| fig-pos: "H"
+#| fig-align: "center"
+
+ggplot(data2, aes(x = pa_group, y = GPA)) +
+  geom_jitter(width = 0.2, 
+              alpha = 0.3, 
+              color = "steelblue") +
+  stat_summary(fun = mean, 
+               geom = "crossbar", 
+               width = 0.4, 
+               color = "red") +
+  labs(x = "Physical Activity Duration Group",
+       y = "GPA") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+
+```{r}
+#| label: fig-pa_group_stress
+#| fig-cap: Stress level distribution by physical activity group
+#| fig-pos: "H"
+#| fig-align: "center"
+
+stress_distribution <- data2 %>%
+  group_by(pa_group, Stress_Level) %>%
+  summarise(count = n()) %>%
+  pivot_wider(names_from = Stress_Level, values_from = count, values_fill = 0)
+
+stress_prop <- stress_distribution %>%
+  pivot_longer(cols = -pa_group, names_to = "Stress_Level", values_to = "count") %>%
+  group_by(pa_group) %>%
+  mutate(prop = count / sum(count)) %>%
+  ungroup() %>%
+  mutate(Stress_Level = factor(Stress_Level, levels = c("High", "Moderate", "Low")))
+
+ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Physical Activity Group",
+       y = "Proportion",
+       fill = "Stress Level") +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+
+@fig-pa_group_GPA presents the distribution of GPA across four physical activity groups. While individual GPAs vary substantially within each group, the mean GPA (marked in red) shows a slight downward trend as physical activity duration increases. Students exercising under 2 hours daily achieved the highest average GPA, while those in the more-than-6-hour group reported the lowest, suggesting a potential inverse relationship between physical activity and academic performance.
+
+@fig-pa_group_stress displays the relative proportions of stress levels for each group. A clear shift is observed: students with low physical activity levels tend to report higher stress, whereas those engaging in 4-5 hours or more than 6 hours of physical activity are more likely to report moderate or low stress. The more-than-6-hour group has the highest proportion of low-stress individuals and the lowest proportion for high stress.
+
+Together, these figures suggest that while higher physical activity may contribute to stress reduction, it might also correlate with a slight drop in GPA. These opposing trends point to a potential trade-off between academic focus and well-being.
