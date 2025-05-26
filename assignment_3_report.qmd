@@ -4,60 +4,12 @@ format: html
 editor: visual
 ---
 
-## Results {#sec-report-results}
+## Discussion {#sec-report-discussion}
 
-```{r}
-#| label: fig-pa_group_GPA
-#| fig-cap: GPA distribution by physical activity group
-#| fig-pos: "H"
-#| fig-align: "center"
+The findings highlight a nuanced relationship between physical activity, academic performance, and stress among students. While increased physical activity appears to reduce perceived stress levels, as shown in @fig-pa_group_stress, it may also be associated with a marginal decline in GPA (@fig-pa_group_GPA). These opposing trends reflect a possible trade-off between mental well-being and academic output.
 
-ggplot(data2, aes(x = pa_group, y = GPA)) +
-  geom_jitter(width = 0.2, 
-              alpha = 0.3, 
-              color = "steelblue") +
-  stat_summary(fun = mean, 
-               geom = "crossbar", 
-               width = 0.4, 
-               color = "red") +
-  labs(x = "Physical Activity Duration Group",
-       y = "GPA") +
-  theme_minimal()  +
-  theme(axis.title.x = element_text(margin = margin(t = 10)),
-        axis.title.y = element_text(margin = margin(r = 10)))
-```
+Several factors may contribute to this pattern. Students engaging in more physical activity may prioritize health and social balance over academic intensity, potentially reducing time or energy devoted to study. Conversely, those with limited physical activity may be more academically driven but face higher stress, possibly due to reduced outlets for relaxation or physical release.
 
-```{r}
-#| label: fig-pa_group_stress
-#| fig-cap: Stress level distribution by physical activity group
-#| fig-pos: "H"
-#| fig-align: "center"
+It is important to note that these associations do not imply causation. Self-reported measures of both GPA and stress may be subject to bias, and unmeasured confounders - such as sleep quality, part-time work, or social support - could influence the observed trends. Moreover, the decline in GPA across groups is modest and should not be overstated.
 
-stress_distribution <- data2 %>%
-  group_by(pa_group, Stress_Level) %>%
-  summarise(count = n()) %>%
-  pivot_wider(names_from = Stress_Level, values_from = count, values_fill = 0)
-
-stress_prop <- stress_distribution %>%
-  pivot_longer(cols = -pa_group, names_to = "Stress_Level", values_to = "count") %>%
-  group_by(pa_group) %>%
-  mutate(prop = count / sum(count)) %>%
-  ungroup() %>%
-  mutate(Stress_Level = factor(Stress_Level, levels = c("High", "Moderate", "Low")))
-
-ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Physical Activity Group",
-       y = "Proportion",
-       fill = "Stress Level") +
-  scale_fill_brewer(palette = "Set2") +
-  theme_minimal()  +
-  theme(axis.title.x = element_text(margin = margin(t = 10)),
-        axis.title.y = element_text(margin = margin(r = 10)))
-```
-
-@fig-pa_group_GPA presents the distribution of GPA across four physical activity groups. While individual GPAs vary substantially within each group, the mean GPA (marked in red) shows a slight downward trend as physical activity duration increases. Students exercising under 2 hours daily achieved the highest average GPA, while those in the more-than-6-hour group reported the lowest, suggesting a potential inverse relationship between physical activity and academic performance.
-
-@fig-pa_group_stress displays the relative proportions of stress levels for each group. A clear shift is observed: students with low physical activity levels tend to report higher stress, whereas those engaging in 4-5 hours or more than 6 hours of physical activity are more likely to report moderate or low stress. The more-than-6-hour group has the highest proportion of low-stress individuals and the lowest proportion for high stress.
-
-Together, these figures suggest that while higher physical activity may contribute to stress reduction, it might also correlate with a slight drop in GPA. These opposing trends point to a potential trade-off between academic focus and well-being.
+Ultimately, these findings suggest that encouraging moderate physical activity may enhance student well-being without severely compromising academic outcomes. Future research could explore optimal activity ranges or the role of time management in balancing study and health.
