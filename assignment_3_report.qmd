@@ -18,9 +18,9 @@ library(dplyr)
 data <- read_csv("data/student_lifestyle_dataset.csv")
 ```
 
-The [data set](https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset) consists of responses from 2,000 students collected through a standardized questionnaire. It includes data on self-reported academic performance (GPA), perceived stress level (Low, Moderate, or High), and various lifestyle habits.
+The [data set](https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset) consists of responses from 2,000 students collected through a standardized questionnaire. It includes data on self-reported academic performance (GPA), stress levels, and various lifestyle habits.
 
-In this report, we will focus on GPA, stress level, and daily physical activity duration, measured in hours.
+In this report, we focus on three key variables: Grade point average (GPA), which reflects students’ academic performance on a 4.0 scale; stress levels, categorized as Low, Moderate, or High; and daily physical activity duration, measured in hours.
 
 ```{r}
 #| label: fig-pa_group
@@ -82,4 +82,6 @@ table_summary <- data2 %>%
 knitr::kable(table_summary)
 ```
 
-The results show a gradual decrease in both GPA and perceived stress level with increasing physical activity. Students in the under-2-hour group reported the highest GPA but also the highest average stress level. Conversely, those in the more-than-6-hour group had the lowest GPA and the lowest stress level. These patterns form the basis for further analysis in the Results section, where the associations between physical activity, academic performance, and stress are explored through visualization analysis.
+The results show a gradual decrease in both GPA and perceived stress level with increasing physical activity. Students in the under-2-hour group reported the highest GPA but also the highest average stress level. Conversely, those in the more-than-6-hour group had the lowest GPA and the lowest stress level. 
+
+These patterns provide the foundation for further analysis in the Results section, where the impact of physical activity on academic performance and stress levels is examined using visualizations such as a jitter plot and a stacked bar chart.
