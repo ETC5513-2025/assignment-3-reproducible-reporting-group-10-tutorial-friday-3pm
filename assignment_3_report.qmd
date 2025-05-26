@@ -60,3 +60,26 @@ data2 <- data %>%
   pa_group = factor(pa_group, levels = c("Under 2 hours", "2-3 hours", 
                                          "4-5 hours", "More than 6 hours")))
 ```
+
+The summary statistics for each group are presented in @tbl-summary-table. Stress level was numerically recoded for analysis purposes: Low = 1, Moderate = 2, High = 3, such that a lower mean value represents lower average stress.
+
+```{r}
+#| label: tbl-summary-table
+#| tbl-cap: Summary of GPA and stress level by physical activity group
+#| fig-pos: "H"
+
+table_summary <- data2 %>%
+  group_by(pa_group) %>%
+  summarise(
+    `Number of students` = n(),
+    `Average GPA` = round(mean(GPA, na.rm = TRUE), 2),
+    `Average stress level` = round(mean(as.numeric(factor(Stress_Level,
+                                levels = c("Low", "Moderate", "High"))), na.rm = TRUE), 2)
+  ) %>%
+  arrange(pa_group) %>%
+  rename(`Physical activity group` = pa_group)
+
+knitr::kable(table_summary)
+```
+
+The results show a gradual decrease in both GPA and perceived stress level with increasing physical activity. Students in the under-2-hour group reported the highest GPA but also the highest average stress level. Conversely, those in the more-than-6-hour group had the lowest GPA and the lowest stress level. These patterns form the basis for further analysis in the Results section, where the associations between physical activity, academic performance, and stress are explored through visualization analysis.
