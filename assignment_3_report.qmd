@@ -1,7 +1,45 @@
 ---
-title: "Assignment 3 Report"
-format: html
+title: "THE RELATIONSHIP BETWEEN PHYSICAL ACTIVITY, ACADEMIC PERFORMANCE, AND STRESS AMONG STUDENTS"
+author: Hafsa Altaf, Hoang Son Lai, Xingyu Wang
+format:
+  html:
+    toc: true
+    embed-resources: true
+    highlight-style: tango
+    theme: sketchy
+  pdf:
+    number-sections: true
+    toc: true
+    title-block-style: default
+    pdf-engine: xelatex
+    documentclass: article
+    mainfont: Times New Roman
+    fontsize: 12pt
+    linestretch: 1.5
+    highlight-style: tango
+    geometry: margin=1in
+    header-includes:
+     - \usepackage{titling}
+     - \pretitle{\begin{center}\bfseries\LARGE}
+     - \posttitle{\par\end{center}\vskip 1.5em}
+     - \usepackage{tocloft}
+     - \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+     - \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+     - \renewcommand{\cfttoctitlefont}{\normalfont\bfseries\Large} 
+     - \renewcommand{\cftsecfont}{\normalsize}                      
+     - \renewcommand{\cftsubsecfont}{\normalsize}                   
+     - \renewcommand{\cftsecpagefont}{\normalsize}
 editor: visual
 ---
 
-
+```{r setup, include = TRUE, echo = FALSE, cache = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  eval = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  out.width = "100%",
+  fig.width = 8, 
+  fig.height = 6,
+  fig.retina = 3)
+```
