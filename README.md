@@ -2,8 +2,8 @@
 
 Group Members:
 
-*
-*
-*
+* Hafsa Altaf
+* Hoang Son Lai 
+* Xingyu Wang
 
-Topic: 
+Topic: THE RELATIONSHIP BETWEEN PHYSICAL ACTIVITY, ACADEMIC PERFORMANCE, AND STRESS AMONG UNIVERSITY STUDENTS
