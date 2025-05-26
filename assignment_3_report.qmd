@@ -4,4 +4,10 @@ format: html
 editor: visual
 ---
 
+## Introduction
 
+Student well-being is increasingly recognized as a key component of academic success and overall academic experience. Physical activity is widely acknowledged to reduce stress, yet its relationship with academic performance remains less clear. This report explores how varying levels of daily physical activity relate to student’s GPA and perceived stress. The data analyzed comes from a standardized questionnaire completed by 2,000 students, capturing self-reported lifestyle habits, GPA, and stress levels.
+
+The primary variables of interest are daily physical activity duration (in hours), stress level (categorized as Low, Moderate, or High), and GPA. Initial visualization suggests a right-skewed distribution of physical activity, with most students engaging in 2–6 hours of exercise per day. To simplify analysis, physical activity was grouped into four ranges: under 2 hours, 2–3 hours, 4–5 hours, and more than 6 hours. These categories strike a balance between group size and behavioral differences.
+
+The objective of this report is to assess whether more physically active students experience better mental well-being and how this may relate to academic performance. Understanding these patterns can help inform strategies for promoting a balanced and productive student lifestyle.
