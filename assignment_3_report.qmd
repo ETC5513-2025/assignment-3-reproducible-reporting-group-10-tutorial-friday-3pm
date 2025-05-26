@@ -48,3 +48,8 @@ knitr::opts_chunk$set(
 
 This report investigates the relationship between physical activity, academic performance (GPA), and stress levels among 2,000 students. Physical activity duration was categorized into four groups to examine patterns and trade-offs. The analysis finds that students engaging in higher levels of daily physical activity tend to report lower stress but also slightly lower GPA. These findings support promoting balanced physical activity to enhance well-being without compromising academic success.
 
+## Introduction
+
+Student well-being is increasingly recognized as a key component of academic success and overall academic experience. Physical activity is widely acknowledged to reduce stress, yet its relationship with academic performance remains less clear. This report explores how varying levels of daily physical activity relate to student’s GPA and perceived stress. The data analyzed comes from a Google Form survey completed by 2,000 students, capturing self-reported lifestyle habits, GPA, and stress levels.
+
+Students were categorized by their average daily exercise duration, as described in Methodology section ([@sec-report-methodology]). And the Results section ([@sec-report-results]) presents the observed trends. The aim of this report is to assess whether more physically active students experience better mental well-being and how this may relate to academic performance. Understanding these patterns can help inform strategies for promoting a balanced and productive student lifestyle.
