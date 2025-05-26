@@ -21,3 +21,42 @@ data <- read_csv("data/student_lifestyle_dataset.csv")
 The [data set](https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset) consists of responses from 2,000 students collected through a standardized questionnaire. It includes data on self-reported academic performance (GPA), perceived stress level (Low, Moderate, or High), and various lifestyle habits.
 
 In this report, we will focus on GPA, stress level, and daily physical activity duration, measured in hours.
+
+```{r}
+#| label: fig-pa_group
+#| fig-cap: Distribution of physical activity hours per day
+#| fig-pos: "H"
+#| fig-align: "center"
+
+ggplot(data, aes(x = Physical_Activity_Hours_Per_Day)) +
+  geom_histogram(binwidth = 1, fill = "#69b3a2", color = "white") +
+  labs(x = "Physical Activity Hours Per Day",
+       y = "Number of Students") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+
+@fig-pa_group presents the distribution of physical activity hours per day among participants. The data show a unimodal and right-skewed pattern, indicating that most students engaged in moderate physical activity. The majority reported exercising between 2 and 6 hours daily, with a concentration around 3-5 hours. Very few students reported extremely low (0-1 hours) or extremely high (above 9 hours) activity levels. Based on this distribution, physical activity duration was grouped into four categories to facilitate comparison:
+
+-   Under 2 hours
+-   2-3 hours
+-   4-5 hours
+-   More than 6 hours
+
+This grouping aims to balance sample size across categories while maintaining behavioral and health-related distinctions.
+
+```{r}
+# Grouping physical activity duration
+data2 <- data %>%
+  mutate(pa_group = case_when(
+    Physical_Activity_Hours_Per_Day < 2 ~ "Under 2 hours",
+    Physical_Activity_Hours_Per_Day >= 2 & Physical_Activity_Hours_Per_Day < 4 
+    ~ "2-3 hours",
+    Physical_Activity_Hours_Per_Day >= 4 & Physical_Activity_Hours_Per_Day < 6 
+    ~ "4-5 hours",
+    Physical_Activity_Hours_Per_Day >= 6 ~ "More than 6 hours"
+  ),
+  pa_group = factor(pa_group, levels = c("Under 2 hours", "2-3 hours", 
+                                         "4-5 hours", "More than 6 hours")))
+```
