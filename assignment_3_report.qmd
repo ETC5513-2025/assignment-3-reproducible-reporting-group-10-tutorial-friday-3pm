@@ -140,7 +140,6 @@ These patterns provide the foundation for further analysis in the Results sectio
 
 ## Results {#sec-report-results}
 
-
 ```{r}
 #| label: fig-pa_group_GPA
 #| fig-cap: GPA distribution by physical activity group
@@ -196,3 +195,13 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
 @fig-pa_group_stress displays the relative proportions of stress levels for each group. A clear shift is observed: students with low physical activity levels tend to report higher stress, whereas those engaging in 4-5 hours or more than 6 hours of physical activity are more likely to report moderate or low stress. The more-than-6-hour group has the highest proportion of low-stress individuals and the lowest proportion for high stress.
 
 Together, these figures suggest that while higher physical activity may contribute to stress reduction, it might also correlate with a slight drop in GPA. These opposing trends point to a potential trade-off between academic focus and well-being.
+
+## Discussion {#sec-report-discussion}
+
+The findings highlight a nuanced relationship between physical activity, academic performance, and stress among students. While increased physical activity appears to reduce perceived stress levels, as shown in @fig-pa_group_stress, it may also be associated with a marginal decline in GPA (@fig-pa_group_GPA). These opposing trends reflect a possible trade-off between mental well-being and academic output.
+
+Several factors may contribute to this pattern. Students engaging in more physical activity may prioritize health and social balance over academic intensity, potentially reducing time or energy devoted to study. Conversely, those with limited physical activity may be more academically driven but face higher stress, possibly due to reduced outlets for relaxation or physical release.
+
+It is important to note that these associations do not imply causation. Self-reported measures of both GPA and stress may be subject to bias, and unmeasured confounders - such as sleep quality, part-time work, or social support - could influence the observed trends. Moreover, the decline in GPA across groups is modest and should not be overstated.
+
+Ultimately, these findings suggest that encouraging moderate physical activity may enhance student well-being without severely compromising academic outcomes. Future research could explore optimal activity ranges or the role of time management in balancing study and health.
