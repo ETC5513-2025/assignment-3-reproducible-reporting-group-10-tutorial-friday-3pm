@@ -56,7 +56,7 @@ Student well-being is increasingly recognized as a key component of academic suc
 
 Students were categorized by their average daily exercise duration, as described in Methodology section ([@sec-report-methodology]). And the Results section ([@sec-report-results]) presents the observed trends. The aim of this report is to assess whether more physically active students experience better mental well-being and how this may relate to academic performance. Understanding these patterns can help inform strategies for promoting a balanced and productive student lifestyle.
 
-## Methodology
+## Methodology {#sec-report-methodology}
 
 ```{r}
 library(readr)
@@ -205,3 +205,16 @@ Several factors may contribute to this pattern. Students engaging in more physic
 It is important to note that these associations do not imply causation. Self-reported measures of both GPA and stress may be subject to bias, and unmeasured confounders - such as sleep quality, part-time work, or social support - could influence the observed trends. Moreover, the decline in GPA across groups is modest and should not be overstated.
 
 Ultimately, these findings suggest that encouraging moderate physical activity may enhance student well-being without severely compromising academic outcomes. Future research could explore optimal activity ranges or the role of time management in balancing study and health.
+
+## Conclusion and recommendations {#sec-report-conclusion}
+
+This report explored the relationship between physical activity, GPA, and stress levels among students. As discussed earlier, students who engage in more daily physical activity tend to experience lower stress but may also report slightly lower academic performance (see [@sec-report-discussion]). These trends suggest a potential trade-off between well-being and academic outcomes.
+
+To support student health without compromising learning, institutions should encourage balanced routines. Specifically, we recommend:
+
+-   Promoting moderate physical activity (e.g., 2-5 hours per day) as part of student wellness programs.
+
+-   Offering time management workshops to help students integrate study and exercise effectively.
+
+-   Investigating additional factors such as sleep, nutrition, and academic workload to gain a more holistic understanding of student performance.
+
