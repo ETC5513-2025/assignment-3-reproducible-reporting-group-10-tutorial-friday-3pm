@@ -4,4 +4,54 @@ format: html
 editor: visual
 ---
 
+## Results {#sec-report-results}
 
+```{r}
+#| label: fig-pa_group_GPA
+#| fig-cap: GPA distribution by physical activity group
+#| fig-pos: "H"
+#| fig-align: "center"
+
+ggplot(data2, aes(x = pa_group, y = GPA)) +
+  geom_jitter(width = 0.2, 
+              alpha = 0.3, 
+              color = "steelblue") +
+  stat_summary(fun = mean, 
+               geom = "crossbar", 
+               width = 0.4, 
+               color = "red") +
+  labs(x = "Physical Activity Duration Group",
+       y = "GPA") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+
+```{r}
+#| label: fig-pa_group_stress
+#| fig-cap: Stress level distribution by physical activity group
+#| fig-pos: "H"
+#| fig-align: "center"
+
+stress_distribution <- data2 %>%
+  group_by(pa_group, Stress_Level) %>%
+  summarise(count = n()) %>%
+  pivot_wider(names_from = Stress_Level, values_from = count, values_fill = 0)
+
+stress_prop <- stress_distribution %>%
+  pivot_longer(cols = -pa_group, names_to = "Stress_Level", values_to = "count") %>%
+  group_by(pa_group) %>%
+  mutate(prop = count / sum(count)) %>%
+  ungroup() %>%
+  mutate(Stress_Level = factor(Stress_Level, levels = c("High", "Moderate", "Low")))
+
+ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Physical Activity Group",
+       y = "Proportion",
+       fill = "Stress Level") +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
