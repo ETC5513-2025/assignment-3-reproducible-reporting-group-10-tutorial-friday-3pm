@@ -4,4 +4,14 @@ format: html
 editor: visual
 ---
 
+## Conclusion and recommendations {#sec-report-conclusion}
 
+This report explored the relationship between physical activity, GPA, and stress levels among university students. As discussed earlier, students who engage in more daily physical activity tend to experience lower stress but may also report slightly lower academic performance (see [@sec-report-discussion]). These trends suggest a potential trade-off between well-being and academic outcomes.
+
+To support student health without compromising learning, institutions should encourage balanced routines. Specifically, we recommend:
+
+-   Promoting moderate physical activity (e.g., 2-5 hours per day) as part of student wellness programs.
+
+-   Offering time management workshops to help students integrate study and exercise effectively.
+
+-   Investigating additional factors such as sleep, nutrition, and academic workload to gain a more holistic understanding of student performance.
