@@ -1,6 +1,7 @@
 ---
 format:
   revealjs:
+    self-contained: true
     theme: solarized
     transition: slide
     slide-number: true
