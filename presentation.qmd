@@ -276,7 +276,7 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
 :::
 
 ::: {.fragment}
-- 🧩 **Potential confounders** (e.g., sleep, workload) are not accounted for.
+- 🧩 **Potential confounders** (e.g. course difficulty, individual learning ability) are not accounted for.
 :::
 
 ---
