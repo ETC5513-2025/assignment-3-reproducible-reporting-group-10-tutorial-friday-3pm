@@ -272,11 +272,11 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
 :::
 
 ::: {.fragment}
-- 🚫 Unable to infer **causality** from correlation.
+- 🚫 Unable to correctly infer **causality** from correlation.
 :::
 
 ::: {.fragment}
-- 🧩 **Potential confounders** (e.g. course difficulty, individual learning ability) are not accounted for.
+- 🧩 **Potential confounders** are not accounted for.
 :::
 
 ---
