@@ -284,16 +284,13 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
 ## Conclusion & Recommendations {.slide-in}
 
 ::: {.fragment}
-- Promoting **moderate activity** (2–5 hours/day) may help reduce stress without significantly harming academic performance.
+- Promoting **moderate activity** (2–5 hours/day)→ lower stress, stable GPA
 :::
 
 ::: {.fragment}
-- Institutions should support students through:
-  - Wellness programs promoting regular physical activity  
-  - **Time management workshops** for balancing exercise and study
+- School Support:
+  - Wellness programs 
+  - Time management workshops
 :::
 
-::: {.fragment}
-- Future research should account for **sleep**, **nutrition**, and **academic workload** to gain deeper insights.
-:::
 
