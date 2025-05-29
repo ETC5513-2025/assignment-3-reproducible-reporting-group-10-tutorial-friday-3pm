@@ -1,0 +1,298 @@
+---
+format:
+  revealjs:
+    theme: solarized
+    transition: slide
+    slide-number: true
+    toc: false
+    highlight-style: github
+    progress: true
+    background-transition: fade
+    navigation-mode: linear
+    controls: true
+    preview-links: auto
+---
+
+```{r setup, include = TRUE, echo = FALSE, cache = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  eval = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  out.width = "100%",
+  fig.width = 8, 
+  fig.height = 6,
+  fig.retina = 3,
+  fig.align = "center")
+```
+
+```{r}
+library(readr)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+# Read in the data set
+data <- read_csv("data/student_lifestyle_dataset.csv")
+```
+
+## {.slide-in}
+
+<div style="
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+  flex-direction: column;
+">
+
+<h2>The Impact of Physical Activity on Students' Academic Performance and Stress Levels</h2>
+
+<p><strong>Group Members</strong><br>
+Hafsa Altaf<br>
+Hoang Son Lai<br>
+Xingyu Wang</p>
+
+</div>
+
+---
+
+## Problem Introduction {.slide-in}
+
+::: {.fragment}
+- 🎓 Student well-being is a growing concern
+:::
+
+::: {.fragment}
+- 🏃 Physical activity is known to reduce stress, but its impact on academic performance (GPA) is unclear.
+:::
+
+::: {.fragment}
+- ❓ **Research question**:  
+  How does daily physical activity impact:
+  
+  - 📚 GPA?
+  
+  - 😟 Stress levels?
+:::
+
+---
+
+## Dataset Description {.slide-in}
+
+::: {.fragment}
+- 📝 Source: A Google Form survey completed by **2,000 students**
+:::
+
+::: {.fragment}
+- 📊 Data set includes students' self-reported GPA, stress levels and various lifestyle habits 
+:::
+
+::: {.fragment}
+- 🔍 Key variables used in the study:
+  - 🎓 **GPA**: 4.0 scale
+  - 😰 **Stress level**: Low, Moderate, High
+  - 🏃️ **Physical activity**: Hours per day 
+:::
+
+---
+
+## Methods {.slide-in}
+
+::: {.fragment}
+::: {.columns}
+
+::: {.column width="65%"}
+```{r}
+#| label: fig-pa_group
+#| fig-cap: Distribution of physical activity hours per day
+#| fig-pos: "H"
+#| out-width: "100%"
+
+ggplot(data, aes(x = Physical_Activity_Hours_Per_Day)) +
+  geom_histogram(binwidth = 1, fill = "#69b3a2", color = "white") +
+  labs(x = "Physical Activity Hours Per Day",
+       y = "Number of Students") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+:::
+
+::: {.column width="35%"}
+- 📌 Most students exercised between 2–6 hours/day.
+
+- 📈 Right-skewed distribution with few extremes.
+:::
+:::
+:::
+---
+
+### Group classification {.slide-in}
+
+::: {.fragment}
+- 🧮 Figure 1 forms the foundation for the group classification.
+:::
+
+::: {.fragment}
+- ⏱️ Physical activity duration is grouped into:
+  - Under 2 hours 
+  - 2–3 hours 
+  - 4–5 hours 
+  - More than 6 hours
+:::
+
+---
+
+### Summary of key statistics {.slide-in}
+
+::: {.fragment}
+| Physical activity group | Average GPA | Average stress |
+|-------------------------|-------------|----------------|
+| Under 2 hours           | 3.26        | 2.64           |
+| 2–3 hours               | 3.17        | 2.45           |
+| 4–5 hours               | 3.09        | 2.25           |
+| More than 6 hours       | 2.98        | 2.19           |
+:::
+
+<div style="margin-top: 0.75em;"></div>
+```{r}
+# Grouping physical activity duration
+data2 <- data %>%
+  mutate(pa_group = case_when(
+    Physical_Activity_Hours_Per_Day < 2 ~ "Under 2 hours",
+    Physical_Activity_Hours_Per_Day >= 2 & Physical_Activity_Hours_Per_Day < 4 
+    ~ "2-3 hours",
+    Physical_Activity_Hours_Per_Day >= 4 & Physical_Activity_Hours_Per_Day < 6 
+    ~ "4-5 hours",
+    Physical_Activity_Hours_Per_Day >= 6 ~ "More than 6 hours"
+  ),
+  pa_group = factor(pa_group, levels = c("Under 2 hours", "2-3 hours", 
+                                         "4-5 hours", "More than 6 hours")))
+```
+
+::: {.fragment}
+🔢 Stress level encoded: Low = 1, Moderate = 2, High = 3 
+:::
+<div style="margin-top: 0.5em;"></div>
+::: {.fragment}
+📉 Trend: A gradual decrease in both GPA and perceived stress level with increasing physical activity. 
+:::
+
+---
+
+## Results {.slide-in}
+
+::: {.fragment}
+#### GPA and stress distribution by physical activity group 
+:::
+
+::: {.fragment}
+::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| label: fig-pa_group_GPA
+#| fig-cap: GPA distribution by physical activity group
+#| fig-pos: "H"
+#| out-width: "100%"
+
+ggplot(data2, aes(x = pa_group, y = GPA)) +
+  geom_jitter(width = 0.2, 
+              alpha = 0.3, 
+              color = "steelblue") +
+  stat_summary(fun = mean, 
+               geom = "crossbar", 
+               width = 0.4, 
+               color = "red") +
+  labs(x = "Physical Activity Group",
+       y = "GPA") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| label: fig-pa_group_stress
+#| fig-cap: Stress level distribution by physical activity group
+#| fig-pos: "H"
+#| out-width: "100%"
+
+stress_distribution <- data2 %>%
+  group_by(pa_group, Stress_Level) %>%
+  summarise(count = n()) %>%
+  pivot_wider(names_from = Stress_Level, values_from = count, values_fill = 0)
+
+stress_prop <- stress_distribution %>%
+  pivot_longer(cols = -pa_group, names_to = "Stress_Level", values_to = "count") %>%
+  group_by(pa_group) %>%
+  mutate(prop = count / sum(count)) %>%
+  ungroup() %>%
+  mutate(Stress_Level = factor(Stress_Level, levels = c("High", "Moderate", "Low")))
+
+ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Physical Activity Group",
+       y = "Proportion",
+       fill = "Stress Level") +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal()  +
+  theme(axis.title.x = element_text(margin = margin(t = 10)),
+        axis.title.y = element_text(margin = margin(r = 10)))
+```
+:::
+:::
+:::
+
+---
+
+### Interpretation {.slide-in}
+
+::: {.fragment}
+- 📉 An **inverse trend** was observed:
+    - More physical activity associated with **less stress**.
+    - But also with **slightly lower GPA**.
+:::
+
+::: {.fragment}
+- ⚖️ This suggests a **trade-off** between mental well-being and academic outcomes.
+:::
+
+---
+
+### Limitations
+
+::: {.fragment}
+- 🧾 Self-reported data may be subject to **bias**.
+:::
+
+::: {.fragment}
+- 🚫 Unable to infer **causality** from correlation.
+:::
+
+::: {.fragment}
+- 🧩 **Potential confounders** (e.g., sleep, workload) are not accounted for.
+:::
+
+---
+
+## Conclusion & Recommendations {.slide-in}
+
+::: {.fragment}
+- Promoting **moderate activity** (2–5 hours/day) may help reduce stress without significantly harming academic performance.
+:::
+
+::: {.fragment}
+- Institutions should support students through:
+  - Wellness programs promoting regular physical activity  
+  - **Time management workshops** for balancing exercise and study
+:::
+
+::: {.fragment}
+- Future research should account for **sleep**, **nutrition**, and **academic workload** to gain deeper insights.
+:::
+
