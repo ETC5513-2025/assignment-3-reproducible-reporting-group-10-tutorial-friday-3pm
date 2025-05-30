@@ -284,13 +284,13 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
 ## Conclusion & Recommendations {.slide-in}
 
 ::: {.fragment}
-- Promoting **moderate activity** (2–5 hours/day)→ lower stress, stable GPA
+- 🧘 Promoting **moderate activity** (2–5 hours/day) → lower stress, stable GPA
 :::
 
 ::: {.fragment}
-- School Support:
-  - Wellness programs 
-  - Time management workshops
+- 🏫 School support:
+  - 🌿 Wellness programs 
+  - ⏳ Time management workshops
 :::
 
 
