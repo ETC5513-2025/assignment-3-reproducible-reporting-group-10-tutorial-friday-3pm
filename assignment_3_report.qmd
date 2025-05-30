@@ -73,8 +73,14 @@ data <- read_csv("data/student_lifestyle_dataset.csv")
 ```
 
 The [data set](https://www.kaggle.com/datasets/steve1215rogg/student-lifestyle-dataset) consists of responses from 2,000 students collected through a standardized questionnaire. It includes data on self-reported academic performance (GPA), stress levels, and various lifestyle habits.
+\clearpage
+In this report, we focus on three key variables: 
 
-In this report, we focus on three key variables: Grade point average (GPA), which reflects students’ academic performance on a 4.0 scale; stress levels, categorized as Low, Moderate, or High; and daily physical activity duration, measured in hours.
+- Grade point average (GPA), which reflects students’ academic performance on a 4.0 scale.
+
+- Stress levels, categorized as Low, Moderate, or High.
+
+- Daily physical activity duration, measured in hours.
 
 ```{r}
 #| label: fig-pa_group
@@ -91,7 +97,7 @@ ggplot(data, aes(x = Physical_Activity_Hours_Per_Day)) +
         axis.title.y = element_text(margin = margin(r = 10)))
 ```
 
-@fig-pa_group presents the distribution of physical activity hours per day among participants. The data show a unimodal and right-skewed pattern, indicating that most students engaged in moderate physical activity. The majority reported exercising between 2 and 6 hours daily, with a concentration around 3-5 hours. Very few students reported extremely low (0-1 hours) or extremely high (above 9 hours) activity levels. Based on this distribution, physical activity duration was grouped into four categories to facilitate comparison:
+@fig-pa_group presents the distribution of physical activity hours per day among participants. The data show a unimodal and right-skewed pattern, indicating that most students engaged in moderate physical activity. The majority reported engaging in physical activity for 2 to 6 hours daily, with a notable concentration between 3 and 5 hours. Very few students reported extremely high (above 8 hours) activity levels. Based on this distribution, physical activity duration was grouped into four categories to facilitate comparison:
 
 -   Under 2 hours
 -   2-3 hours
@@ -106,13 +112,13 @@ data2 <- data %>%
   mutate(pa_group = case_when(
     Physical_Activity_Hours_Per_Day < 2 ~ "Under 2 hours",
     Physical_Activity_Hours_Per_Day >= 2 & Physical_Activity_Hours_Per_Day < 4 
-    ~ "2-3 hours",
+    ~ "2 - 3 hours",
     Physical_Activity_Hours_Per_Day >= 4 & Physical_Activity_Hours_Per_Day < 6 
-    ~ "4-5 hours",
+    ~ "4 - 5 hours",
     Physical_Activity_Hours_Per_Day >= 6 ~ "More than 6 hours"
   ),
-  pa_group = factor(pa_group, levels = c("Under 2 hours", "2-3 hours", 
-                                         "4-5 hours", "More than 6 hours")))
+  pa_group = factor(pa_group, levels = c("Under 2 hours", "2 - 3 hours", 
+                                         "4 - 5 hours", "More than 6 hours")))
 ```
 
 The summary statistics for each group are presented in @tbl-summary-table. Stress level was numerically recoded for analysis purposes: Low = 1, Moderate = 2, High = 3, such that a lower mean value represents lower average stress.
@@ -156,7 +162,7 @@ ggplot(data2, aes(x = pa_group, y = GPA)) +
                geom = "crossbar", 
                width = 0.4, 
                color = "red") +
-  labs(x = "Physical Activity Duration Group",
+  labs(x = "Physical Activity Group",
        y = "GPA") +
   theme_minimal()  +
   theme(axis.title.x = element_text(margin = margin(t = 10)),
@@ -192,11 +198,11 @@ ggplot(stress_prop, aes(x = pa_group, y = prop, fill = Stress_Level)) +
         axis.title.y = element_text(margin = margin(r = 10)))
 ```
 
-@fig-pa_group_GPA presents the distribution of GPA across four physical activity groups. While individual GPAs vary substantially within each group, the mean GPA (marked in red) shows a slight downward trend as physical activity duration increases. Students exercising under 2 hours daily achieved the highest average GPA, while those in the more-than-6-hour group reported the lowest, suggesting a potential inverse relationship between physical activity and academic performance.
+@fig-pa_group_GPA illustrates the distribution of GPA across four groups defined by daily physical activity duration. While individual GPA scores vary within each group, the red crossbars indicate that the mean GPA decreases slightly as physical activity increases. Students engaging in less than 2 hours of daily physical activity tend to have the highest average GPA, whereas those reporting more than 6 hours of activity per day exhibit the lowest average GPA. This pattern suggests a modest negative association between physical activity duration and academic performance.
 
-@fig-pa_group_stress displays the relative proportions of stress levels for each group. A clear shift is observed: students with low physical activity levels tend to report higher stress, whereas those engaging in 4-5 hours or more than 6 hours of physical activity are more likely to report moderate or low stress. The more-than-6-hour group has the highest proportion of low-stress individuals and the lowest proportion for high stress.
+@fig-pa_group_stress presents the distribution of self-reported stress levels within each physical activity group. Students with under 2 hours of physical activity show the highest proportion of high stress. As physical activity increases, the share of students reporting high stress declines, while the proportions of moderate and low stress rise - most notably in the 4 - 5 hours and more than 6 hours groups. The most active students report the lowest levels of high stress and the highest levels of low stress.
 
-Together, these figures suggest that while higher physical activity may contribute to stress reduction, it might also correlate with a slight drop in GPA. These opposing trends point to a potential trade-off between academic focus and well-being.
+Taken together, the two figures highlight a potential trade-off: increased physical activity appears to be associated with lower stress levels, but also with a slightly lower GPA.
 
 ## Discussion {#sec-report-discussion}
 
@@ -214,7 +220,7 @@ This report explored the relationship between physical activity, GPA, and stress
 
 To support student health without compromising learning, institutions should encourage balanced routines. Specifically, we recommend:
 
--   Promoting moderate physical activity (e.g., 2-5 hours per day) as part of student wellness programs.
+-   Promoting moderate physical activity (from 2 to 5 hours per day) as part of student wellness programs.
 
 -   Offering time management workshops to help students integrate study and exercise effectively.
 
