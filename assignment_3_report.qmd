@@ -20,12 +20,18 @@ format:
     geometry: margin=1in
     header-includes:
      - \usepackage{titling}
-     - \pretitle{\begin{center}\bfseries\LARGE}
+     - \usepackage{xcolor}
+     - \usepackage{titlesec}
+     - \definecolor{cobaltblue}{HTML}{0047ab}
+     - \titleformat{\section}
+      {\color{cobaltblue}\normalfont\Large\bfseries}
+      {\thesection}{1em}{}[\titlerule]
+     - \pretitle{\begin{center}\color{cobaltblue}\bfseries\LARGE}
      - \posttitle{\par\end{center}\vskip 1.5em}
      - \usepackage{tocloft}
      - \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
      - \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
-     - \renewcommand{\cfttoctitlefont}{\normalfont\bfseries\Large} 
+     - \renewcommand{\cfttoctitlefont}{\color{cobaltblue}\normalfont\bfseries\Large} 
      - \renewcommand{\cftsecfont}{\normalsize}                      
      - \renewcommand{\cftsubsecfont}{\normalsize}                   
      - \renewcommand{\cftsecpagefont}{\normalsize}
